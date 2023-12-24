@@ -1276,8 +1276,8 @@ function dbg(text) {
 // === Body ===
 
 var ASM_CONSTS = {
-  165416: () => { let loading = document.getElementById("loading"); document.body.removeChild(loading); let window = document.createElement('canvas'); window.id = 'ANJIN_WINDOW'; window.style.backgroundColor = '#000'; document.body.appendChild(window); },  
- 165651: ($0) => { document.title = UTF8ToString($0); }
+  73576: () => { let loading = document.getElementById("loading"); document.body.removeChild(loading); let window = document.createElement('canvas'); window.id = 'ANJIN_WINDOW'; window.style.backgroundColor = '#000'; document.body.appendChild(window); },  
+ 73811: ($0) => { document.title = UTF8ToString($0); }
 };
 
 
@@ -5757,10 +5757,6 @@ var ASM_CONSTS = {
       }
     };
 
-  var __emscripten_throw_longjmp = () => {
-      throw Infinity;
-    };
-
   
   var runtimeKeepalivePush = () => {
       runtimeKeepaliveCounter += 1;
@@ -9156,15 +9152,6 @@ var ASM_CONSTS = {
   var _emscripten_glLinkProgram = _glLinkProgram;
 
   /** @suppress {duplicate } */
-  var _glPixelStorei = (pname, param) => {
-      if (pname == 0xCF5 /* GL_UNPACK_ALIGNMENT */) {
-        GL.unpackAlignment = param;
-      }
-      GLctx.pixelStorei(pname, param);
-    };
-  var _emscripten_glPixelStorei = _glPixelStorei;
-
-  /** @suppress {duplicate } */
   var _glShaderSource = (shader, count, string, length) => {
       var source = GL.getSource(shader, count, string, length);
   
@@ -10028,7 +10015,6 @@ var ASM_CONSTS = {
 
 
 
-
   var FS_unlink = (path) => FS.unlink(path);
 PThread.init();;
 
@@ -10170,8 +10156,6 @@ var wasmImports = {
   /** @export */
   _emscripten_thread_set_strongref: __emscripten_thread_set_strongref,
   /** @export */
-  _emscripten_throw_longjmp: __emscripten_throw_longjmp,
-  /** @export */
   alBufferData: _alBufferData,
   /** @export */
   alDeleteBuffers: _alDeleteBuffers,
@@ -10274,8 +10258,6 @@ var wasmImports = {
   /** @export */
   emscripten_glLinkProgram: _emscripten_glLinkProgram,
   /** @export */
-  emscripten_glPixelStorei: _emscripten_glPixelStorei,
-  /** @export */
   emscripten_glShaderSource: _emscripten_glShaderSource,
   /** @export */
   emscripten_glTexImage2D: _emscripten_glTexImage2D,
@@ -10332,16 +10314,6 @@ var wasmImports = {
   /** @export */
   fd_write: _fd_write,
   /** @export */
-  invoke_iii: invoke_iii,
-  /** @export */
-  invoke_iiii: invoke_iiii,
-  /** @export */
-  invoke_iiiii: invoke_iiiii,
-  /** @export */
-  invoke_vi: invoke_vi,
-  /** @export */
-  invoke_viiii: invoke_viiii,
-  /** @export */
   memory: wasmMemory
 };
 var wasmExports = createWasm();
@@ -10374,61 +10346,6 @@ var stackRestore = createExportWrapper('stackRestore');
 var stackAlloc = createExportWrapper('stackAlloc');
 var _emscripten_stack_get_current = () => (_emscripten_stack_get_current = wasmExports['emscripten_stack_get_current'])();
 var dynCall_jiji = Module['dynCall_jiji'] = createExportWrapper('dynCall_jiji');
-
-function invoke_viiii(index,a1,a2,a3,a4) {
-  var sp = stackSave();
-  try {
-    getWasmTableEntry(index)(a1,a2,a3,a4);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_iii(index,a1,a2) {
-  var sp = stackSave();
-  try {
-    return getWasmTableEntry(index)(a1,a2);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_iiiii(index,a1,a2,a3,a4) {
-  var sp = stackSave();
-  try {
-    return getWasmTableEntry(index)(a1,a2,a3,a4);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_iiii(index,a1,a2,a3) {
-  var sp = stackSave();
-  try {
-    return getWasmTableEntry(index)(a1,a2,a3);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_vi(index,a1) {
-  var sp = stackSave();
-  try {
-    getWasmTableEntry(index)(a1);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0) throw e;
-    _setThrew(1, 0);
-  }
-}
 
 
 // include: postamble.js
